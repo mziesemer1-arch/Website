@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marvin Ziesemer - Social Media Agentur Flensburg. Instagram Marketing, Content Creation & Social Recruiting.">
+    <title>Marvin Ziesemer | Social Media Marketing</title>
+    
+    <!-- Favicon (SVG Data URI) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000%22/><text x=%2250%22 y=%2250%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2250%22 fill=%22%23fff%22 text-anchor=%22middle%22 dy=%22.35em%22>M</text></svg>">
+
+    <style>
+        /* 
+         * =========================================
+         * 1. RESET & VARIABLES
+         * =========================================
+         */
+        :root {
+            --bg-body: #ffffff;
+            --bg-secondary: #F5F5F7;
+            --text-main: #1D1D1F;
+            --text-muted: #86868B;
+            
+            --accent: #0071E3;
+            --accent-soft: rgba(0, 113, 227, 0.08);
+            --accent-dark: #005BB5;
+            
+            --card-light-bg: #f7f9fc; 
+            
+            --radius-l: 28px;
+            --radius-m: 16px;
+            
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.08), 0 10px 15px rgba(0,0,0,0.05);
+            
+            --spacing-section: clamp(80px, 10vw, 140px);
+            --font-h1: clamp(2.8rem, 5.5vw, 5rem);
+            --font-h2: clamp(2.2rem, 4vw, 3.5rem);
+            --font-body: clamp(1.05rem, 1.2vw, 1.3rem);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 
+         * =========================================
+         * 2. TYPOGRAPHY & UTILITIES
+         * =========================================
+         */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2; 
+            color: var(--text-main);
+        }
+
+        h1 { font-size: var(--font-h1); margin-bottom: 24px; min-height: 2.2em; }
+        h2 { font-size: var(--font-h2); margin-bottom: 20px; }
+        h3 { font-size: 1.6rem; margin-bottom: 8px; font-weight: 600; }
+
+        p {
+            font-size: var(--font-body);
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .text-center { text-align: center; }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--accent);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary { background-color: var(--text-main); color: #fff; }
+        .btn-primary:hover { background-color: #000; transform: scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+
+        .btn-accent { background-color: var(--accent); color: #fff; }
+        .btn-accent:hover { background-color: var(--accent-dark); transform: scale(1.03); box-shadow: 0 15px 30px rgba(0, 113, 227, 0.25); }
+
+        .btn-ghost { background: rgba(255,255,255,0.4); color: var(--accent); font-weight: 600; backdrop-filter: blur(5px); }
+        .btn-ghost:hover { color: var(--accent-dark); background: rgba(255,255,255,0.8); }
+
+        /* Typewriter Cursor (WEISS) */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #ffffff;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* SVG Icon Style Helper */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-soft);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        .icon-box svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        /* White icon for black card */
+        .card.featured .icon-box {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        /* 
+         * =========================================
+         * 3. NAVIGATION
+         * =========================================
+         */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: var(--text-main); text-decoration: none; z-index: 102; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        .menu-btn { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 102; }
+        .menu-btn span { width: 24px; height: 2px; background-color: var(--text-main); transition: 0.3s; }
+
+        /* 
+         * =========================================
+         * 4. HERO SECTION (WAVE ANIMATION)
+         * =========================================
+         */
+        #hero {
+            padding: 180px 0 120px;
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        /* 
+         * Wave Background Logic 
+         * Statt Blobs verwenden wir riesige, weiche Gradienten, 
+         * die sich horizontal bewegen.
+         */
+        .hero-wave-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            filter: blur(60px); /* Weichzeichner */
+            opacity: 0.9;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .wave-layer {
+            position: absolute;
+            width: 200%; /* Breiter als der Screen für Bewegung */
+            height: 200%;
+            top: -50%; left: -50%;
+            border-radius: 40%;
+            animation: waveMotion 15s infinite linear;
+        }
+
+        .wave-1 {
+            background: rgba(0, 113, 227, 0.15);
+            animation-duration: 25s;
+            animation-direction: normal;
+        }
+
+        .wave-2 {
+            background: rgba(90, 200, 250, 0.2); /* Helleres Blau */
+            animation-duration: 35s;
+            animation-direction: reverse;
+            top: -40%; left: -40%;
+        }
+
+        .wave-3 {
+            background: rgba(0, 91, 181, 0.1); /* Dunkleres Blau */
+            animation-duration: 20s;
+            top: -60%; left: -60%;
+        }
+
+        @keyframes waveMotion {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Typewriter WEISS */
+        #typewriter { color: #ffffff; position: relative; }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        /* 
+         * =========================================
+         * 5. ABOUT SECTION
+         * =========================================
+         */
+        #about { padding: var(--spacing-section) 0; background-color: #fafafa; position: relative; overflow: hidden; }
+        
+        /* Decorative Background Elements (Social Icons) */
+        .bg-deco {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.05;
+            color: var(--text-main);
+            z-index: 0;
+            animation: float 6s infinite ease-in-out;
+        }
+        .deco-1 { top: 10%; left: 5%; animation-delay: 0s; font-size: 4rem; } /* Heart */
+        .deco-2 { bottom: 10%; right: 5%; animation-delay: 2s; font-size: 5rem; } /* Like Bubble */
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+        .about-img-wrapper {
+            position: relative; border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow-card);
+            aspect-ratio: 4/5; transform: rotate(2deg); transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); background: #fff;
+        }
+        .about-img-wrapper:hover { transform: rotate(0deg) scale(1.02); }
+        .about-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* 
+         * =========================================
+         * 6. SERVICES SECTION
+         * =========================================
+         */
+        #services { padding: var(--spacing-section) 0; background: #fff; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 80px; }
+        
+        .card {
+            background: var(--card-light-bg); 
+            padding: 40px 32px; 
+            border-radius: var(--radius-l); 
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            display: flex; flex-direction: column; justify-content: space-between; position: relative;
+            height: 100%;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); background: #fff; border-color: rgba(0, 113, 227, 0.2); }
+
+        .card.featured { background: #1c1c1e; color: #fff; border: none; position: relative; }
+        .card.featured::before {
+            content: ""; position: absolute; top: 20%; left: 10%; right: 10%; bottom: 10%;
+            background: var(--accent); filter: blur(60px); opacity: 0.4; z-index: -1; border-radius: 50%; transition: opacity 0.5s;
+        }
+        .card.featured:hover::before { opacity: 0.6; }
+        .card.featured h3, .card.featured p, .card.featured .price { color: #fff; }
+        .card.featured .features li { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+        
+        .card h3 { font-size: 1.4rem; } 
+        .price { font-size: 2.5rem; font-weight: 700; margin: 24px 0; color: var(--text-main); letter-spacing: -0.03em; }
+        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+        .features { list-style: none; margin-bottom: 40px; }
+        .features li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; color: var(--text-muted); display: flex; align-items: flex-start; }
+        .features li::before { content: "✓"; color: var(--accent); margin-right: 12px; font-weight: 800; font-size: 0.9em; min-width: 15px; }
+
+        /* REFERENCES */
+        #references { padding: var(--spacing-section) 0; background: var(--bg-secondary); text-align: center; position: relative; overflow: hidden; }
+        .bg-watermark {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg);
+            font-size: 30vw; font-weight: 900; color: rgba(0,0,0,0.015); pointer-events: none; white-space: nowrap; z-index: 1;
+        }
+        .logos-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin: 60px 0; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
+        .logos-grid:hover { opacity: 0.8; filter: grayscale(0%); }
+        .logo-placeholder { font-weight: 800; font-size: 1.8rem; color: #ccc; letter-spacing: -0.04em; }
+        .quote-box { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; }
+        .quote-text { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 600; line-height: 1.3; color: var(--text-main); }
+
+        /* 
+         * =========================================
+         * 7. CONTACT SECTION (UPDATED LAYOUT)
+         * =========================================
+         */
+        #contact { padding: var(--spacing-section) 0; background: linear-gradient(180deg, #fff 0%, #f0f8ff 100%); }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start; /* Changed to start for better bullet alignment */
+            margin-top: 40px;
+        }
+
+        /* Bullet Points Area */
+        .contact-info {
+            padding: 40px 0; /* Align height visually */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .contact-info h3 { margin-bottom: 24px; font-size: 1.8rem; }
+        .benefit-list { list-style: none; }
+        .benefit-list li {
+            padding: 16px 0; /* Mehr Platz zwischen Punkten */
+            font-size: 1.15rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        .benefit-list li::before {
+            content: "✓";
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 113, 227, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            margin-right: 20px;
+            font-size: 0.9em;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Form Area */
+        .form-container {
+            width: 100%; 
+            background: rgba(255,255,255,0.7); 
+            backdrop-filter: blur(20px);
+            padding: 40px; 
+            border-radius: var(--radius-l); 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .input-group { margin-bottom: 24px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
+        .form-input { width: 100%; padding: 18px 24px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.1); background: #fff; font-size: 1.05rem; font-family: inherit; outline: none; transition: all 0.3s; }
+        .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15); }
+        textarea.form-input { resize: vertical; min-height: 160px; }
+
+        /* FOOTER */
+        footer { padding: 80px 0 40px; background: #fafafa; border-top: 1px solid #eaeaea; font-size: 0.9rem; color: var(--text-muted); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-links a { color: var(--text-muted); margin-left: 30px; text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        /* 
+         * =========================================
+         * 8. ANIMATIONS & MOBILE
+         * =========================================
+         */
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .form-container { order: 2; }
+            .contact-info { order: 1; text-align: left; padding: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { min-height: auto; font-size: 2.5rem; }
+            
+            .nav-links {
+                position: fixed; top: 0; right: 0; height: 100vh; width: 100%;
+                background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                flex-direction: column; justify-content: center; align-items: center;
+                transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+                gap: 40px; font-size: 1.5rem; z-index: 101;
+            }
+            .nav-links.nav-active { transform: translateX(0); }
+            .menu-btn { display: flex; }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img-wrapper { order: -1; margin-bottom: 20px; transform: rotate(0); }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links a { margin: 0 15px; }
+            .hero-wave-container { opacity: 0.8; filter: blur(60px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">Marvin Ziesemer | Social Media Marketing</a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" onclick="toggleMenu()">Über mich</a>
+                <a href="#services" onclick="toggleMenu()">Leistungen</a>
+                <a href="#references" onclick="toggleMenu()">Referenzen</a>
+                <a href="#contact" onclick="toggleMenu()">Kontakt</a>
+            </nav>
+
+            <div class="menu-btn" onclick="toggleMenu()">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Continuous Wave) -->
+    <section id="hero">
+        <div class="hero-wave-container">
+            <div class="wave-layer wave-1"></div>
+            <div class="wave-layer wave-2"></div>
+            <div class="wave-layer wave-3"></div>
+        </div>
+
+        <div class="container hero-content">
+            <span class="badge">SOCIAL MEDIA AUS FLENSBURG</span>
+            
+            <!-- Typewriter Headline (Clean White) -->
+            <h1>
+                Sichtbarkeit,<br>
+                <span id="typewriter"></span><span class="cursor">|</span>
+            </h1>
+            
+            <p>Schluss mit "Posten um zu Posten". Ich mache dein Unternehmen zur regionalen Marke – mit Strategie, Content und echtem Nordlicht-Charme.</p>
+            
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Jetzt anfragen</a>
+                <a href="#services" class="btn btn-ghost">Leistungen ansehen ↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="reveal">
+        <!-- Floating Social Elements -->
+        <div class="bg-deco deco-1">♥</div>
+        <div class="bg-deco deco-2">💬</div>
+
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Moin, ich bin Marvin.</h2>
+                    <p style="margin-left: 0; color: var(--text-main); font-weight: 500;">Keine Zeit für Social Media?<br>Ständige Algorithmus-Updates, neue Plattformen und noch mehr To-dos? Wir nehmen dir das komplett ab.</p>
+                    <p style="margin-left: 0;">Als Social-Media-Team aus Flensburg sorgen wir dafür, dass dein Unternehmen digital genauso professionell auftritt wie analog – auf allen Plattformen, nicht nur auf Instagram.</p>
+                    <p style="margin-left: 0;">Ob Recruiting neuer Fachkräfte, Neukundengewinnung, Imageaufbau oder regelmäßiger Content, der wirklich funktioniert:<br>Wir reden nicht lange – wir liefern Ergebnisse.</p>
+                    <a href="#contact" class="btn btn-ghost" style="padding-left:0; margin-top:10px; color:var(--accent);">Lass uns kennenlernen &rarr;</a>
+                </div>
+                
+                <div class="about-img-wrapper">
+                    <!-- Platzhalter Bild Unsplash -->
+                    <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Marvin Ziesemer Portrait Platzhalter" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="reveal">
+        <div class="container">
+            <div class="text-center">
+                <h2>Unsere Dienstleistungen</h2>
+                <p>Klar strukturiert, transparent kalkuliert.</p>
+            </div>
+            
+            <div class="services-grid">
+                
+                <!-- Content Creation -->
+                <div class="card">
+                    <!-- SVG Icon Camera -->
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M23 7h-6l-2-3h-6l-2 3h-6v17h22v-17zm-11 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm0-12c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Content Creation</h3>
+                        <p style="margin:0; font-size:0.95rem;">Du betreust deine Kanäle bereits selbst aber dir fehlt immer wieder der passende Content?</p>
+                        <div class="price">Starter</div>
+                        <ul class="features">
+                            <li>Foto- & Videoproduktion</li>
+                            <li>Reels & Shorts Schnitt</li>
+                            <li>Professionelle Bildbearbeitung</li>
+                            <li>Ideal für Projektarbeiten</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-accent" style="width:100%">Anfragen</a>
+                </div>
+
+                <!-- Full Service -->
+                <div class="card featured">
+                    <!-- SVG Icon Layers -->
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"/></svg>
+                    </div>
+                    <div>
+                        <span class="badge" style="background:rgba(255,255,255,0.2); color:#fff; margin-bottom:15px; border:none; box-shadow:none;">Meistgebucht</span>
+                        <h3>Full Service Betreuung</h3>
+                        <p style="margin:0; font-size:0.95rem; opacity:0.8;">Lehn dich zurück.</p>
+                        <div class="price">All-in</div>
+                        <ul class="features">
+                            <li>Komplette Kanalbetreuung</li>
+                            <li>Content Erstellung vor Ort</li>
+                            <li>Strategie & Redaktionsplan</li>
+                            <li>Community Management</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn" style="background:#fff; color:#000; width:100%">Jetzt starten</a>
+                </div>
+
+                <!-- Social Recruiting -->
+                <div class="card">
+                    <!-- SVG Icon People -->
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Social Recruiting</h3>
+                        <p style="margin:0; font-size:0.95rem;">Du bist auf der Suche nach den richtigen Mitarbeitern?</p>
+                        <div class="price">Business</div>
+                        <ul class="features">
+                            <li>Performance Marketing (Ads)</li>
+                            <li>Bewerber-Funnel Aufbau</li>
+                            <li>Zielgruppen-Targeting</li>
+                            <li>Budget-Optimierung</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-accent" style="width:100%">Anfragen</a>
+                </div>
+
+                <!-- Werbekampagnen -->
+                <div class="card">
+                    <!-- SVG Icon Target/Chart -->
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    </div>
+                    <div>
+                        <h3>Werbekampagnen</h3>
+                        <p style="margin:0; font-size:0.95rem;">Brauchst du zielgerichtete Ads, die genau die richtigen Leute erreichen?</p>
+                        <div class="price">Performance</div>
+                        <ul class="features">
+                            <li>Zielgruppenanalyse & Targeting</li>
+                            <li>Kreative Werbemittel (Creatives)</li>
+                            <li>Laufende Optimierung & Monitoring</li>
+                            <li>Detailliertes Reporting</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-accent" style="width:100%">Anfragen</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section id="references" class="reveal">
+        <div class="bg-watermark">TRUST</div>
+        <div class="container">
+            <h2>Vertrauen aus der Region</h2>
+            <div class="logos-grid">
+                <span class="logo-placeholder">COMPANY A</span>
+                <span class="logo-placeholder">FIRMA B</span>
+                <span class="logo-placeholder">STARTUP C</span>
+                <span class="logo-placeholder">LOKALHELD D</span>
+            </div>
+            
+            <div class="quote-box">
+                <p class="quote-text">"Marvin hat unseren Instagram-Kanal komplett gedreht. Statt Langeweile gibt es jetzt echte Interaktion und wir haben bereits zwei neue Mitarbeiter über die Kampagnen eingestellt."</p>
+                <div style="margin-top:24px; font-size:0.95rem; color:var(--text-muted); font-weight:600;">— Geschäftsführer, Handwerk Flensburg</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact (Updated Layout: Left Bullets, Right Form) -->
+    <section id="contact" class="reveal">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2>Lass uns schnacken.</h2>
+                <p>Erzähl mir von deiner Herausforderung. Das Erstgespräch geht auf mich.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Links: Bullet Points -->
+                <div class="contact-info">
+                    <h3>Deine Vorteile auf einen Blick</h3>
+                    <ul class="benefit-list">
+                        <li>3-monatige Testphase (keine Vertragslaufzeit)</li>
+                        <li>Mehr Sichtbarkeit für dein Unternehmen</li>
+                        <li>Individuelle Betreuung</li>
+                        <li>Professionelle Content Erstellung</li>
+                        <li>Mehr Zeit für dein Kerngeschäft</li>
+                        <li>Keine lange Suche nach geeignetem Personal</li>
+                        <li>24/7 Support</li>
+                    </ul>
+                </div>
+
+                <!-- Rechts: Kontaktformular -->
+                <div class="form-container">
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Wie darf ich dich ansprechen?" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" class="form-input" placeholder="name@firma.de" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="message">Nachricht</label>
+                            <textarea id="message" class="form-input" placeholder="Worum geht es grob?" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Nachricht senden</button>
+                        <p style="font-size: 0.8rem; margin-top: 20px; text-align: center; color: var(--text-muted);">Keine Sorge, deine Daten bleiben unter uns.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-inner">
+            <div>
+                <strong style="color:var(--text-main);">Marvin Ziesemer</strong><br>
+                Social Media Marketing Flensburg<br>
+                &copy; 2025 Alle Rechte vorbehalten.
+            </div>
+            <div class="footer-links">
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS (Menu + Scroll + Typewriter) -->
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            const btn = document.querySelector('.menu-btn');
+            nav.classList.toggle('nav-active');
+            btn.classList.toggle('toggle');
+            document.body.style.overflow = nav.classList.contains('nav-active') ? 'hidden' : 'auto';
+        }
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Typewriter Effect
+        const textElement = document.getElementById('typewriter');
+        const phrases = [
+            "die hängen bleibt.",
+            "die verkauft.",
+            "die Ergebnisse liefert."
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                // Deleting text
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 40; 
+            } else {
+                // Typing text
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; 
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Pause at end of phrase
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next phrase
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start Typewriter when page loads
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
